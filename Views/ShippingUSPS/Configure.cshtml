@@ -49,7 +49,7 @@
                     @Html.GrandLabelFor(model => model.AvailableCarrierServicesDomestic, new Dictionary<string, object> { { "class", "control-label" } }, false)
                 </div>
                 <div class="col-md-9 col-sm-9">
-                    <div style="height: 250px; width: 500px; overflow: auto; border: solid 1px #bbb;">
+                    <div>
                         @foreach (var csd in Model.AvailableCarrierServicesDomestic)
                         {
                             <input type="checkbox" name="CheckedCarrierServicesDomestic" value="@(csd)" checked="@Model.CarrierServicesOfferedDomestic.Contains(csd)" />
@@ -64,7 +64,7 @@
                     @Html.GrandLabelFor(model => model.AvailableCarrierServicesInternational, new Dictionary<string, object> { { "class", "control-label" } }, false)
                 </div>
                 <div class="col-md-9 col-sm-9">
-                    <div style="height: 250px; width: 500px; overflow: auto; border: solid 1px #bbb;">
+                    <div>
                         @foreach (var csi in Model.AvailableCarrierServicesInternational)
                         {
                             <input type="checkbox" name="CheckedCarrierServicesInternational" value="@(csi)" checked="@Model.CarrierServicesOfferedInternational.Contains(csi)" />
