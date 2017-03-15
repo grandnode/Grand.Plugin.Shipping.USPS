@@ -23,6 +23,7 @@ using Grand.Services.Localization;
 using Grand.Services.Shipping;
 using Grand.Services.Shipping.Tracking;
 using Grand.Core.Infrastructure;
+using Grand.Core.Domain.Orders;
 
 namespace Grand.Plugin.Shipping.USPS
 {
@@ -117,19 +118,19 @@ namespace Grand.Plugin.Shipping.USPS
         {
             var usedMeasureWeight = _measureService.GetMeasureWeightBySystemKeyword(MEASUREWEIGHTSYSTEMKEYWORD);
             if (usedMeasureWeight == null)
-                throw new NopException(string.Format("USPS shipping service. Could not load \"{0}\" measure weight", MEASUREWEIGHTSYSTEMKEYWORD));
+                throw new GrandException(string.Format("USPS shipping service. Could not load \"{0}\" measure weight", MEASUREWEIGHTSYSTEMKEYWORD));
 
             var baseusedMeasureWeight = _measureService.GetMeasureWeightById(_measureSettings.BaseWeightId);
             if (baseusedMeasureWeight == null)
-                throw new NopException("Primary weight can't be loaded");
+                throw new GrandException("Primary weight can't be loaded");
             
             var usedMeasureDimension = _measureService.GetMeasureDimensionBySystemKeyword(MEASUREDIMENSIONSYSTEMKEYWORD);
             if (usedMeasureDimension == null)
-                throw new NopException(string.Format("USPS shipping service. Could not load \"{0}\" measure dimension", MEASUREDIMENSIONSYSTEMKEYWORD));
+                throw new GrandException(string.Format("USPS shipping service. Could not load \"{0}\" measure dimension", MEASUREDIMENSIONSYSTEMKEYWORD));
 
             var baseusedMeasureDimension = _measureService.GetMeasureDimensionById(_measureSettings.BaseDimensionId);
             if (baseusedMeasureDimension == null)
-                throw new NopException("Primary dimension can't be loaded");
+                throw new GrandException("Primary dimension can't be loaded");
 
             decimal lengthTmp, widthTmp, heightTmp;
             _shippingService.GetDimensions(getShippingOptionRequest.Items, out widthTmp, out lengthTmp, out heightTmp);
@@ -725,6 +726,16 @@ namespace Grand.Plugin.Shipping.USPS
             this.DeletePluginLocaleResource("Plugins.Shipping.USPS.Fields.AvailableCarrierServicesInternational.Hint");
 
             base.Uninstall();
+        }
+
+        public bool HideShipmentMethods(IList<ShoppingCartItem> cart)
+        {
+            return false;
+        }
+
+        public Type GetControllerType()
+        {
+            return typeof(Controllers.ShippingUSPSController);
         }
 
         #endregion

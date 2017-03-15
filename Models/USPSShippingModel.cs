@@ -13,25 +13,25 @@ namespace Grand.Plugin.Shipping.USPS.Models
             AvailableCarrierServicesInternational = new List<string>();
         }
 
-        [NopResourceDisplayName("Plugins.Shipping.USPS.Fields.Url")]
+        [GrandResourceDisplayName("Plugins.Shipping.USPS.Fields.Url")]
         public string Url { get; set; }
 
-        [NopResourceDisplayName("Plugins.Shipping.USPS.Fields.Username")]
+        [GrandResourceDisplayName("Plugins.Shipping.USPS.Fields.Username")]
         public string Username { get; set; }
 
-        [NopResourceDisplayName("Plugins.Shipping.USPS.Fields.Password")]
+        [GrandResourceDisplayName("Plugins.Shipping.USPS.Fields.Password")]
         public string Password { get; set; }
 
-        [NopResourceDisplayName("Plugins.Shipping.USPS.Fields.AdditionalHandlingCharge")]
+        [GrandResourceDisplayName("Plugins.Shipping.USPS.Fields.AdditionalHandlingCharge")]
         public decimal AdditionalHandlingCharge { get; set; }
         
         public IList<string> CarrierServicesOfferedDomestic { get; set; }
-        [NopResourceDisplayName("Plugins.Shipping.USPS.Fields.AvailableCarrierServicesDomestic")]
+        [GrandResourceDisplayName("Plugins.Shipping.USPS.Fields.AvailableCarrierServicesDomestic")]
         public IList<string> AvailableCarrierServicesDomestic { get; set; }
         public string[] CheckedCarrierServicesDomestic { get; set; }
 
         public IList<string> CarrierServicesOfferedInternational { get; set; }
-        [NopResourceDisplayName("Plugins.Shipping.USPS.Fields.AvailableCarrierServicesInternational")]
+        [GrandResourceDisplayName("Plugins.Shipping.USPS.Fields.AvailableCarrierServicesInternational")]
         public IList<string> AvailableCarrierServicesInternational { get; set; }
         public string[] CheckedCarrierServicesInternational { get; set; }
     }
